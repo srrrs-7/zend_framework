@@ -4,6 +4,6 @@ ENV TZ=Asia/Tokyo
 
 RUN apk --update --no-cache add git zip unzip
 
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /var/www/zend/public
