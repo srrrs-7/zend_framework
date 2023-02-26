@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: ./docker/nginx
+    depends_on:
+      - app
+    ports:
+      - 80:80
+    volumes:
+      - ./zend/public:/var/www/zend/public
+
+  app:
+    build:
+      context: ./docker/php
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: tutorial
+    depends_on:
+      - db
+    links:
+      - db:mysql
+    volumes:
+      - ./docker/php/php.ini:/usr/ocal/etc/php_php.ini
+      - ./zend/:/var/www/zend
+
+  db:
+    build:
+      context: ./docker/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: tutorial
+    ports:
+      - 3306:3306
+    volumes:
+      - ./zend/data:/var/lib/mysql
+
+volumes:
+  data:
+    driver: local
