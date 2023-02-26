@@ -6,4 +6,4 @@ RUN apk --update --no-cache add git zip unzip
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /var/www/zf-sample
+WORKDIR /var/www/zend/public

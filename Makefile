@@ -10,5 +10,12 @@ check_composer:
 # initial command to running
 zendgen:
 	docker-compose up -d --build
+	rm -r ./zend
+	mkdir zend
+	mkdir zend/public
 	docker-compose exec app rm -r /var/www/zend/public
 	docker-compose exec app composer create-project zendframework/skeleton-application .
+	docker-compose restart
+
+zendstart:
+	php -S localhost:8000 -t public/

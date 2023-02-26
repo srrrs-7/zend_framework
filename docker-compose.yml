@@ -22,7 +22,7 @@ services:
     links:
       - db:mysql
     volumes:
-      - ./docker/php/php.ini:/usr/ocal/etc/php_php.ini
+      - ./docker/php/php.ini:/usr/ocal/etc/php/php.ini
       - ./zend/:/var/www/zend
 
   db:
@@ -34,7 +34,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./zend/data:/var/lib/mysql
+      - ./docker/mysql/data:/var/lib/mysql
 
 volumes:
   data:
