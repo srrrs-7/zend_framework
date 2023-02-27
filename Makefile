@@ -1,5 +1,5 @@
-compose:
-	docker-compose up -d --build
+composeup:
+	docker-compose up -d
 
 composedown:
 	docker-compose down --volumes
@@ -17,5 +17,11 @@ zendgen:
 	docker-compose exec app composer create-project zendframework/skeleton-application .
 	docker-compose restart
 
+restart:
+	docker-compose restart
+
 zendstart:
 	php -S localhost:8000 -t public/
+
+check_nginx:
+	nginx -t
